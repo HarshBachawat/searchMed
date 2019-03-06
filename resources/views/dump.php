@@ -35,3 +35,6 @@
 
 
  @yield('content')
+
+
+  $errors->first('add_lat') 

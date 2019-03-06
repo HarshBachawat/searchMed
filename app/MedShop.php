@@ -16,7 +16,7 @@ class MedShop extends Authenticatable implements MustVerifyEmail
 
   	protected $guard = 'medshop';
 
-  	protected $fillable = ['name', 'email', 'password',];
+  	protected $fillable = ['name', 'email', 'password','add1', 'add2', 'add_lat', 'add_lng'];
 
   	protected $hidden = ['password', 'remember_token',];
 

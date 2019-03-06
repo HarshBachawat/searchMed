@@ -59,7 +59,6 @@ class RegisterController extends Controller
             'password' => ['required', 'string', 'min:6', 'confirmed'],
         ]);
     }
-
     /**
      * Create a new user instance after a valid registration.
      *
@@ -82,7 +81,7 @@ class RegisterController extends Controller
 
     public function showMedShopRegisterForm()
     {
-        return view('auth.register', ['url' => 'medshop', 'add' => 'medshop']);
+        return view('auth.medreg');
     }
 
     
@@ -96,7 +95,7 @@ class RegisterController extends Controller
             'password' => Hash::make($request['password']),
         ]);
 
-        return redirect()->intended('login/admin');
+        return redirect()->intended('admin');
     }
 
     protected function createMedShop(Request $request)
@@ -106,8 +105,12 @@ class RegisterController extends Controller
             'name' => $request['name'],
             'email' => $request['email'],
             'password' => Hash::make($request['password']),
+            'add1' => $request['add1'],
+            'add2' => $request['add2'],
+            'add_lat' => $request['add_lat'],
+            'add_lng' => $request['add_lng'],
         ]);
         $MedShop->sendEmailVerificationNotification();
-        return redirect()->intended('login/medshop');
+        return redirect()->intended('medshop');
     }
 }
