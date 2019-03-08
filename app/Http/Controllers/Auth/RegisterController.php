@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\User;
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\Auth\LoginController;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
@@ -95,7 +96,7 @@ class RegisterController extends Controller
             'password' => Hash::make($request['password']),
         ]);
 
-        return redirect()->intended('admin');
+        return redirect()->intended('/admin');
     }
 
     protected function createMedShop(Request $request)
@@ -111,6 +112,6 @@ class RegisterController extends Controller
             'add_lng' => $request['add_lng'],
         ]);
         $MedShop->sendEmailVerificationNotification();
-        return redirect()->intended('medshop');
+        return redirect()->intended('/medshop');
     }
 }

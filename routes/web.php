@@ -16,7 +16,13 @@
     
    // Route::view('/home', 'home')->middleware('auth');
     Route::view('/admin', 'admin')->middleware('auth:admin');
-    Route::view('/medshop', 'medshop')->middleware(['auth:medshop','medshop.verified']);
+    Route::view('/medshop', 'medshop/dash')->middleware(['auth:medshop','medshop.verified']);
+    Route::view('/medshop/addstock', 'medshop/addstock')->middleware(['auth:medshop','medshop.verified']);
+    Route::get('/medshop/viewdb', 'MedicineController@index')->middleware(['auth:medshop','medshop.verified']);
+    Route::post('/medshop/addstock', 'MedicineController@addStock');
+    Route::post('/medshop/edit', 'MedicineController@edit');
+    Route::post('/medshop/delete', 'MedicineController@delete');
+  
 
     Route::get('medshop/email/resend', [
         'uses' => 'MedShopVerificationController@resend',

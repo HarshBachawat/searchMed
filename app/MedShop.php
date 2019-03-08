@@ -24,4 +24,8 @@ class MedShop extends Authenticatable implements MustVerifyEmail
     {
         $this->notify(new VerifyMedShopEmail);
     }
+
+    public function medicines(){
+    return $this->hasMany('App\Medicine','med_id');
+}
 }
