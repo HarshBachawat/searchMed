@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use App\Medicine;
+use App\MedShop;
 use Auth;
 use DB;
 class MedicineController extends Controller
@@ -72,6 +73,19 @@ class MedicineController extends Controller
     {
     	$medicine = Medicine::find($request->id)->delete();
     	return response()->json();
+    }
+
+    public function getNearest(Request $request)
+    {
+    	$stores = DB::select("SELECT name,add_lat,add_lng, ( 6371 * acos( cos( radians(".$request->lat.") ) * cos( radians( add_lat ) ) * cos( radians( add_lng ) - radians(".$request->lng.") ) + sin( radians(".$request->lat.") ) * sin( radians( add_lat ) ) ) ) AS distance FROM medshop HAVING distance < 25 ORDER BY distance LIMIT 0 , 20;");
+    		return response()->json($stores);
+    	
+    }
+
+    public function searchmed(Request $request)
+    {
+    	$stores = DB::table('medshop')->join('medicine','medshop.id','=','medicine.med_id')->select('medshop.name','medshop.add_lat','medshop.add_lng')->where('medicine.name','=',$request->name)->get();
+    	return response()->json($stores);
     }
 
 }

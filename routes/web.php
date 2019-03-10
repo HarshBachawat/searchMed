@@ -19,6 +19,8 @@
     Route::view('/medshop', 'medshop/dash')->middleware(['auth:medshop','medshop.verified']);
     Route::view('/medshop/addstock', 'medshop/addstock')->middleware(['auth:medshop','medshop.verified']);
     Route::get('/medshop/viewdb', 'MedicineController@index')->middleware(['auth:medshop','medshop.verified']);
+    Route::get('/getNearest', 'MedicineController@getNearest');
+    Route::get('/searchmed', 'MedicineController@searchmed');
     Route::post('/medshop/addstock', 'MedicineController@addStock');
     Route::post('/medshop/edit', 'MedicineController@edit');
     Route::post('/medshop/delete', 'MedicineController@delete');
