@@ -38,3 +38,7 @@
         'uses' => 'MedShopVerificationController@verify',
         'as' => 'medshop.verification.verify'
     ]);
+
+    Route::view('/newInvoice', 'medshop/invoice')->middleware(['auth:medshop','medshop.verified']);;
+    Route::post('/newInvoice', 'InvoiceController@fetch')->name('autocomplete.fetch');
+    Route::post('medshop/invoice', 'InvoiceController@invoiceDetails');

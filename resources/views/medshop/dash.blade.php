@@ -5,9 +5,11 @@
 	<div align="center">
 	   <a href="{{ url('/medshop/addstock' ) }}" ><button align="right" type="button" class="btn btn-default" >Add Stock</button></a>
 	    
-    	<button align="right" type="button" class="btn btn-default" >New Invoice</button>
+		<a href="{{ url('/newInvoice' ) }}" ><button align="right" type="button" class="btn btn-default" id="newInvoice">New Invoice</button></a>
  </div>
 </div>
+
+</script>
 @endsection
 
 @section('head')
