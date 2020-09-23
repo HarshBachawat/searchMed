@@ -69,13 +69,13 @@ body {
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
 <body>
-    <div class="sidenav">
+<div class="sidenav">
 </br>
-  <a href="#">Dashboard</a>
+  <a href="{{url('/medshop')}}">Dashboard</a>
 </br>
-  <a href="#">View Database</a>
+  <a href="{{url('/medshop/viewdb')}}">View Database</a>
 </br>
-  <a href="#">Invoice Manager</a>
+  <a href="{{url('/newInvoice')}}">Invoice Manager</a>
 </br>
 </div>
     <div id="app">
